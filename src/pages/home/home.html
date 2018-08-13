@@ -3,13 +3,14 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
   <ion-toolbar>
-    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getMovies($event)" (ionClear)="clearMoviesList()" >
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getMovies($event)" (ionClear)="clearMoviesList()" placeholder="Search movie..." >
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item *ngFor="let movie of movieList">
+  <ion-item *ngFor="let movie of movieList"
+            (click)="pushMovieDetail(movie)">
     <h2>{{movie.title}}</h2>
   </ion-item>
 </ion-content>
