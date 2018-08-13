@@ -15,20 +15,23 @@ export class HomePage {
   constructor(public navCtrl: NavController) {}
 
   getMovies(event) {
-  	let query = event.target.value.trim();
-   
+  	let query = event.target.value;
+
     if (!query) {
       this.movieList = null;
       return;
     }
 
+    query = query.trim();
+    if(query == '') {
+      return;
+    }
+
     this.api.searchMovie(query)
       .then(movies => this.movieList = movies);
-
   }
 
   pushMovieDetail(movie) {
-    console.log(movie);
     this.navCtrl.push("MovieDetailsPage", {movie: movie});
   }
 

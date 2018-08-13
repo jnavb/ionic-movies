@@ -14,7 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'movie-details.html',
 })
 export class MovieDetailsPage {
-	movieHeader: Object = null;
+	movieHeader: Object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   this.movieHeader = navParams.data.movie;
