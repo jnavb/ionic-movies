@@ -1,6 +1,6 @@
 # TODO
 ## Tasks
-* Searchbar
+* Searchbar :heavy_check_mark:
 * Detail page
 * Initial page
 * Search by (Actor, year...)
