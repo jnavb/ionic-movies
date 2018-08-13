@@ -1,8 +1,9 @@
 # TODO
 ## Tasks
-* Searchbar :heavy_check_mark:
-* Detail page
-* Initial page
+* Searchbar  :heavy_check_mark:
+* Detail page  :heavy_check_mark:
+* Initial page 
+* Styling
 * Search by (Actor, year...)
 * Bookmark movies
 * Settings tab
