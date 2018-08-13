@@ -5,14 +5,32 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{movieHeader?.title}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-	<p>{{movieHeader?.overview}}</p>
+<ion-content>
+<div>
+	<img style="width:100%" src="https://image.tmdb.org/t/p/w400/{{movieHeader?.backdrop_path}}">
+	<ion-list>
+  <button ion-item >
+    {{ movieHeader?.title }}
+  </button>   
+  <button ion-item >
+    {{ movieHeader?.release_date | date: 'longDate'}}
+  </button>
+  <button ion-item >
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+  </button> 
+  <p padding>
+    {{ movieHeader?.overview }}
+  </p>
+</ion-list>
+</div>
 </ion-content>

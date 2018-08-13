@@ -24,12 +24,14 @@ export class MovieDetailsPage {
   }
 
   ionViewDidLoad() {
-    this.getDetail(this.movieHeader['id']);	
+    if(this.movieHeader)
+      this.getDetail(this.movieHeader.id);
   }
 
   getDetail(id: number) {
     this.api.movieDetail(id)
-      .then(res => this.movieDetail = res);  
+      .then(res => this.movieDetail = res)
+      .then(a => console.log('HEADER', this.movieHeader, 'DETAIL', this.movieDetail));  
   }
 
 }
