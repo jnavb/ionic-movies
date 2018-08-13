@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { Api } from '../../providers/api'
 
@@ -27,7 +27,7 @@ export class HomePage {
       return;
     }
 
-    this.api.searchMovie(query)
+    this.api.movieSearch(query)
       .then(movies => this.movieList = movies);
   }
 
