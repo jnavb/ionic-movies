@@ -27,6 +27,11 @@ export class HomePage {
 
   }
 
+  pushMovieDetail(movie) {
+    console.log(movie);
+    this.navCtrl.push("MovieDetailsPage", {movie: movie});
+  }
+
   clearMoviesList(event) {
   	this.movieList = null;
   }
