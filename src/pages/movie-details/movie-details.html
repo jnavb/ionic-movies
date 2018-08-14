@@ -12,7 +12,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content *ngIf="movieHeader">
 <div>
 	<ion-list>
   <button ion-item >
@@ -21,12 +21,16 @@
   <button ion-item >
     {{ movieHeader?.release_date | date: 'longDate'}}
   </button>
-  <button ion-item >
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star"></ion-icon>
-    <ion-icon name="star-outline"></ion-icon>
+  <button ion-item >  
+    <div *ngIf="movieHeader?.vote_average;else notRated">
+      <ion-icon [name]="movieHeader?.vote_average > 2 ? 'star' : 'star-outline'"></ion-icon>
+      <ion-icon [name]="movieHeader?.vote_average > 4 ? 'star' : 'star-outline'"></ion-icon>
+      <ion-icon [name]="movieHeader?.vote_average > 6 ? 'star' : 'star-outline'"></ion-icon>
+      <ion-icon [name]="movieHeader?.vote_average > 8 ? 'star' : 'star-outline'"></ion-icon>
+      <ion-icon [name]="movieHeader?.vote_average > 9 ? 'star' : 'star-outline'"></ion-icon>
+    </div>
+    <ng-template #notRated>Not rated</ng-template> 
+    <div *ngIf="movieHeader.original_language"> {{ movieHeader.original_language | languagePipe }} </div>
   </button> 
   <p padding>
     {{ movieHeader?.overview }}
