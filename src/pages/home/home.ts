@@ -11,12 +11,12 @@ export class HomePage {
   searchQuery: string = '';
   api: Api = new Api();
   movieSearch: Array<Object> = null;
-  moviesInTheather: Array<Object> = null;
+  moviesInTheather: Array<Object> = [];
 
   constructor(public navCtrl: NavController) {}
 
   getMovies(event) {
-  	let query = event.target.value;
+    let query = event.target.value;
 
     if (!query) {
       this.movieSearch = null;
@@ -41,9 +41,19 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.api.thisWeekInTheathers()
+    this.searchMoviesInTheathers();
+  }
+
+  searchMoviesInTheathers() {
+    let dateToday = new Date();
+    let today = dateToday.toISOString().substring(0,10);
+    
+    dateToday.setDate(dateToday.getDate() - 7);
+    let sevenDaysAgo = dateToday.toISOString().substring(0,10);
+
+    this.api.inTheathers(sevenDaysAgo, today)
       .then(res => this.moviesInTheather = res)
-      .then(a => console.log('IN THEATHERS', a));
+      .then(a => console.log('IN THEATHERS', a)); 
   }
 
 }

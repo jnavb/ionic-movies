@@ -19,15 +19,15 @@ export class Api {
 			.then(data => data.json());
 	} 
 
-	thisWeekInTheathers = () => {
+	inTheathers = (dateGte:string, dateLte: string) => {
 		return fetch(`https://api.themoviedb.org/3/discover/movie?
 			api_key=${this.API_KEY}
 			&sort_by=release_date.desc
 			&include_adult=false
 			&include_video=false
 			&page=1
-			&primary_release_date.gte=2018-08-15
-			&primary_release_date.lte=2018-08-23`)
+			&primary_release_date.gte=${dateGte}
+			&primary_release_date.lte=${dateLte}`)
 			.then(data => data.json())
 			.then(json => json.results);
 	}
