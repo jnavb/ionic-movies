@@ -8,21 +8,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding class="card-background-page">
-  
+<ion-content>
+
   <ion-item *ngFor="let movie of movieSearch"
             (click)="pushMovieDetail(movie)">
     <h2>{{movie.title}}</h2>
   </ion-item>
-  <div *ngIf="!searchQuery">
-  <ion-card *ngFor="let movie of moviesInTheather" (click)="pushMovieDetail(movie)">
-    <span *ngIf="movie.poster_path">
-      <img *ngIf="movie.backdrop_path" src="https://image.tmdb.org/t/p/w400{{movie.backdrop_path}}"/>
-      <img *ngIf="!movie.backdrop_path" src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}"/>
-  
-      <div class="card-title">{{movie.title}}</div>
-      <div class="card-subtitle">{{movie.release_date | date}}</div>
-    </span>
-  </ion-card>
+
+  <h1 class="list-header">In teathers</h1>
+  <div *ngIf="!movieSearch">
+    <div *ngFor="let movie of moviesInTheather">
+      <span *ngIf="movie.poster_path"> 
+        <div class="card" (click)="pushMovieDetail(movie)">
+            <img class="center" src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}"/>
+            <p>{{movie.title}}</p>
+        </div>
+      </span>
+    </div>
   </div>
+  
 </ion-content>
