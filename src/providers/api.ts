@@ -18,5 +18,18 @@ export class Api {
 		return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${this.API_KEY}&language=en-US`)
 			.then(data => data.json());
 	} 
+
+	thisWeekInTheathers = () => {
+		return fetch(`https://api.themoviedb.org/3/discover/movie?
+			api_key=${this.API_KEY}
+			&sort_by=release_date.desc
+			&include_adult=false
+			&include_video=false
+			&page=1
+			&primary_release_date.gte=2018-08-15
+			&primary_release_date.lte=2018-08-23`)
+			.then(data => data.json())
+			.then(json => json.results);
+	}
 }
 
