@@ -15,8 +15,9 @@
     <h2>{{movie.title}}</h2>
   </ion-item>
 
-  <h1 class="list-header">In teathers</h1>
+  
   <div *ngIf="!movieSearch">
+  <h1 class="list-header">In theaters</h1>
     <div *ngFor="let movie of moviesInTheather">
       <span *ngIf="movie.poster_path"> 
         <div class="card" (click)="pushMovieDetail(movie)">
@@ -27,8 +28,8 @@
     </div>
   </div>
   
-  <h1 class="list-header">Popular</h1>
   <div *ngIf="!movieSearch">
+  <h1 class="list-header">Popular</h1>
     <div *ngFor="let movie of moviesPopular">
       <span *ngIf="movie.poster_path"> 
         <div class="card" (click)="pushMovieDetail(movie)">
