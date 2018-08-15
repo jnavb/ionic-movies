@@ -2,12 +2,12 @@
 ## Tasks
 * Searchbar  :heavy_check_mark:
 * Detail page  :heavy_check_mark:
-* Initial page 
-* Detail page (Add tab with extra details)
-* Styling
-* Search by (Actor, year...)
+* Initial page :heavy_check_mark:
+* Search by Series
 * Bookmark movies
-* Settings tab
+* Detail page (Add tab with extra details)
+* Add Imdb, filmaffinity... score
+* Styling
 
 ## Refactor
 * Change Ionic Router to angular router #Ionicv4 
