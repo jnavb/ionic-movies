@@ -10,7 +10,8 @@ import { Api } from '../../providers/api'
 export class HomePage {
   searchQuery: string = '';
   api: Api = new Api();
-  movieList: Array<Object> = null;
+  movieSearch: Array<Object> = null;
+  moviesInTheather: Array<Object> = null;
 
   constructor(public navCtrl: NavController) {}
 
@@ -18,7 +19,7 @@ export class HomePage {
   	let query = event.target.value;
 
     if (!query) {
-      this.movieList = null;
+      this.movieSearch = null;
       return;
     }
 
@@ -28,7 +29,7 @@ export class HomePage {
     }
 
     this.api.movieSearch(query)
-      .then(movies => this.movieList = movies);
+      .then(movies => this.movieSearch = movies);
   }
 
   pushMovieDetail(movie) {
@@ -36,7 +37,13 @@ export class HomePage {
   }
 
   clearMoviesList(event) {
-  	this.movieList = null;
+  	this.movieSearch = null;
+  }
+
+  ionViewDidLoad() {
+    this.api.thisWeekInTheathers()
+      .then(res => this.moviesInTheather = res)
+      .then(a => console.log('IN THEATHERS', a));
   }
 
 }
