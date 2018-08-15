@@ -54,13 +54,13 @@ export class HomePage {
     let sevenDaysAgo = dateToday.toISOString().substring(0,10);
 
     this.api.inTheathers(sevenDaysAgo, today)
-      .then(res => this.moviesInTheather = res)
+      .then(res => this.moviesInTheather = res.slice(0,res.length/2))
       .then(a => console.log('IN THEATHERS', a)); 
   }
 
   searchPopularMovies() {
     this.api.popularMovies()
-      .then(res => this.moviesPopular = res)
+      .then(res => this.moviesPopular = res.slice(0,res.length/2))
       .then(a => console.log('POPULAR', a));
   }
 }
