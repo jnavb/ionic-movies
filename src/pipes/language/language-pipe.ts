@@ -6,8 +6,7 @@ import { LANGUAGES } from '../../models/lang.js'
 })
 export class LanguagePipe implements PipeTransform {
   transform(value: string, ...args) {
-  	console.log('Pipe',value, LANGUAGES)
     return LANGUAGES.hasOwnProperty(value) ? LANGUAGES[value] 
-    																: value;
+    																			 : value;
   }
 }
