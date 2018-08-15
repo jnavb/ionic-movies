@@ -1,5 +1,5 @@
 page-home {
-	ion-navbar {
+    ion-navbar {
 		background-color: color($colors, primary);
 	}
 	.header-md::after {
@@ -7,32 +7,33 @@ page-home {
 	}
 	.list-header{
 		margin: 0;
-		padding-left: 16px;
-		padding-bottom: 8px;
+		padding: 6px 2px 6px 16px;
 		margin: .5em;
-		text-decoration: underline;
 		color: color($colors, font);
+		text-align: end;
+		filter: drop-shadow(3px 1px 6px black);
 	}
 	.card {
-    position: relative;
-    height: 100px;
-		width: 100%;
-    overflow:hidden;
-    
-    img {
-    	position: absolute;
-    	min-height: 80px;
-    	left: 0px;
-    	transform: translate(0,-30%);
-
-    	z-index: -1;
-    	filter: blur(1.7px) opacity(.6);
-    }
-    p {
-    	color: color($colors, light);
-    	font-weight: bold;
-    	font-size: 3rem;
-    	text-align: center;
-    }
+        position: relative;
+        height: 120px;
+	    width: 100%;
+        overflow: hidden;
+        img {
+        	position: absolute;
+            width: 100%;
+        	min-height: 80px;
+        	left: 0px;
+        	transform: translate(0,-30%);
+        	padding:10px;
+        	z-index: -1;
+        	filter: blur(1.7px) opacity(.4);
+        }
+        p {
+            color: color($colors, font);
+        	font-weight: bold;
+        	font-size: 3rem;
+        	text-align: center;
+        	filter: drop-shadow(3px 1px 6px black);
+        }
 	}
 }
