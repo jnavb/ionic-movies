@@ -8,9 +8,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item *ngFor="let movie of movieList"
+<ion-content padding class="card-background-page">
+  <ion-item *ngFor="let movie of movieSearch"
             (click)="pushMovieDetail(movie)">
     <h2>{{movie.title}}</h2>
   </ion-item>
+  <ion-card *ngFor="let movie of moviesInTheather"
+            (click)="pushMovieDetail(movie)">
+    
+    <img *ngIf="movie.backdrop_path" src="https://image.tmdb.org/t/p/w400{{movie.backdrop_path}}"/>
+    <img *ngIf="!movie.backdrop_path" src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}"/>
+    <img src="">
+
+    <div class="card-title">{{movie.title}}</div>
+    <div class="card-subtitle">{{movie.release_date | date}}</div>
+  </ion-card>
 </ion-content>
