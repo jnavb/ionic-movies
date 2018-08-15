@@ -31,5 +31,13 @@ export class Api {
 			.then(data => data.json())
 			.then(json => json.results);
 	}
+	popularMovies = () => {
+		return fetch(`https://api.themoviedb.org/3/movie/popular?
+			api_key=${this.API_KEY}
+			&language=en-US
+			&page=1`)
+			.then(data => data.json())
+			.then(json => json.results);
+	}
 }
 

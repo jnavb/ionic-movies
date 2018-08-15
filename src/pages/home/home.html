@@ -27,4 +27,16 @@
     </div>
   </div>
   
+  <h1 class="list-header">Popular</h1>
+  <div *ngIf="!movieSearch">
+    <div *ngFor="let movie of moviesPopular">
+      <span *ngIf="movie.poster_path"> 
+        <div class="card" (click)="pushMovieDetail(movie)">
+            <img class="center" src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}"/>
+            <p>{{movie.title}}</p>
+        </div>
+      </span>
+    </div>
+  </div>
+
 </ion-content>

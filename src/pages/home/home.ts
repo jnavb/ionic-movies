@@ -12,6 +12,7 @@ export class HomePage {
   api: Api = new Api();
   movieSearch: Array<Object> = null;
   moviesInTheather: Array<Object> = [];
+  moviesPopular: Array<Object> = [];
 
   constructor(public navCtrl: NavController) {}
 
@@ -42,6 +43,7 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.searchMoviesInTheathers();
+    this.searchPopularMovies();
   }
 
   searchMoviesInTheathers() {
@@ -56,4 +58,9 @@ export class HomePage {
       .then(a => console.log('IN THEATHERS', a)); 
   }
 
+  searchPopularMovies() {
+    this.api.popularMovies()
+      .then(res => this.moviesPopular = res)
+      .then(a => console.log('POPULAR', a));
+  }
 }
