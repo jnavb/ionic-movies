@@ -27,7 +27,7 @@ export class ApiMovies {
 	movieDetail = (id: number) => {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
-			.set('language', 'en-US')
+			.set('language', 'en-US');
 
 		return this.http.get(`${this.baseUrl}movie/${id}`, { params })
 	} 
@@ -51,10 +51,30 @@ export class ApiMovies {
 			.set('page', '1')
 			.set('include_adult', 'false')
 			.set('include_video', 'false')
-			.set('sort_by', 'release_date.desc')
+			.set('sort_by', 'release_date.desc');
 		
 		return this.http.get<Movie[]>(`${this.baseUrl}discover/movie?`, { params })
 			.map((json:any) => json.results)
 	}
-}
 
+	popularActors = () => {
+		let params = new HttpParams()
+			.set('api_key', this.apiKey)
+			.set('language', 'en-US')
+			.set('page', '1');
+
+		return this.http.get(`${this.baseUrl}person/popular?`, { params })
+			.map((json:any) => json.results);
+	}
+	actorSearch = (personId:string) => {
+		let params = new HttpParams()
+			.set('api_key', this.apiKey)
+			.set('query', personId)
+			.set('language', 'en-US')
+			.set('page', '1')
+			.set('include_adult', 'false');
+
+		return this.http.get(`${this.baseUrl}search/person?`, { params })
+			.map((json:any) => json.results);
+	}
+}
