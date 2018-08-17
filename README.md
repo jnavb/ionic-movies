@@ -3,10 +3,10 @@
 * Searchbar  :heavy_check_mark:
 * Detail page  :heavy_check_mark:
 * Initial page :heavy_check_mark:
-* Search by Series
-* Bookmark movies
+* Search by  ~~Series~~ Actor :heavy_check_mark:
 * Detail page (Add tab with extra details)
 * Add Imdb, filmaffinity... score
+* Bookmark movies 
 * Styling
 
 ## Refactor
