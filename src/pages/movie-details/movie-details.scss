@@ -19,6 +19,7 @@ page-movie-details {
 	.item-inner {
 		padding-left: 16px;
 	}
+
 	.button-inner {
 		//1.Solve opacity background problem
 		//2.Increase arrow weight (if possible)
@@ -28,6 +29,6 @@ page-movie-details {
 		height:35%; 
     background-size: cover; 
     background-position: center;
-    //filter: brightness(70%);
+    filter: brightness(70%) blur(1px);
 	}
 }
