@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ApiMovies } from '../../providers/api-movies'
+import { ApiMovies } from '../../services/api-movies'
 
 @Component({
   selector: 'page-home',

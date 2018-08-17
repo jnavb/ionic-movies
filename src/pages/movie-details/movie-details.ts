@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ApiMovies } from '../../providers/api-movies'
+import { ApiMovies } from '../../services/api-movies'
 import { Movie } from '../../models/movie'
 /**
  * Generated class for the MovieDetailsPage page.
