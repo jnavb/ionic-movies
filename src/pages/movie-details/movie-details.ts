@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Api } from '../../providers/api'
+import { ApiMovies } from '../../providers/api-movies'
 import { Movie } from '../../models/movie'
 /**
  * Generated class for the MovieDetailsPage page.
@@ -16,10 +16,9 @@ import { Movie } from '../../models/movie'
 })
 export class MovieDetailsPage {
 	movieHeader: Movie;
-  api: Api = new Api();
   movieDetail: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiMovies) {
   this.movieHeader = navParams.data.movie;
   }
 
@@ -30,8 +29,7 @@ export class MovieDetailsPage {
 
   getDetail(id: number) {
     this.api.movieDetail(id)
-      .then(res => this.movieDetail = res)
-      .then(a => console.log('HEADER', this.movieHeader, 'DETAIL', this.movieDetail));  
+      .subscribe(res => {this.movieDetail = res});
   }
 
 }
