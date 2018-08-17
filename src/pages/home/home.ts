@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Api } from '../../providers/api'
+import { ApiMovies } from '../../providers/api-movies'
 
 @Component({
   selector: 'page-home',
@@ -9,12 +9,11 @@ import { Api } from '../../providers/api'
 })
 export class HomePage {
   searchQuery: string = '';
-  api: Api = new Api();
   movieSearch: Array<Object> = null;
   moviesInTheather: Array<Object> = [];
   moviesPopular: Array<Object> = [];
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, public api : ApiMovies) {}
 
   getMovies(event) {
     let query = event.target.value;
@@ -23,22 +22,21 @@ export class HomePage {
       this.movieSearch = null;
       return;
     }
-
     query = query.trim();
     if(query == '') {
       return;
     }
 
     this.api.movieSearch(query)
-      .then(movies => this.movieSearch = movies);
+      .subscribe(movies => {this.movieSearch = movies});
   }
 
   pushMovieDetail(movie) {
     this.navCtrl.push("MovieDetailsPage", {movie: movie});
   }
 
-  clearMoviesList(event) {
-  	this.movieSearch = null;
+  clearMoviesList() {
+    this.movieSearch = null;
   }
 
   ionViewDidLoad() {
@@ -54,13 +52,11 @@ export class HomePage {
     let sevenDaysAgo = dateToday.toISOString().substring(0,10);
 
     this.api.inTheathers(sevenDaysAgo, today)
-      .then(res => this.moviesInTheather = res.slice(0,res.length/2))
-      .then(a => console.log('IN THEATHERS', a)); 
+      .subscribe(res => {this.moviesInTheather = res.slice(0,res.length/2)})
   }
 
   searchPopularMovies() {
     this.api.popularMovies()
-      .then(res => this.moviesPopular = res.slice(0,res.length/2))
-      .then(a => console.log('POPULAR', a));
+      .subscribe(res => {this.moviesPopular = res.slice(0,res.length/2)})
   }
 }

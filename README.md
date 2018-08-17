@@ -11,7 +11,6 @@
 
 ## Refactor
 * Change Ionic Router to angular router #Ionicv4 
-* Api class one call
 * Virtual scrolling :x: 
-* Use http angular library
+* Use http angular library :heavy_check_mark:
 * Use config API to delete redundancies
