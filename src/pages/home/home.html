@@ -26,14 +26,11 @@
         </div>
       </span>
     </div>
-  </div>
-  
-  <div *ngIf="!movieSearch">
   <h1 class="list-header">Popular</h1>
     <div *ngFor="let movie of moviesPopular">
       <span *ngIf="movie.poster_path"> 
         <div class="card" (click)="pushMovieDetail(movie)">
-            <img class="center" src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}"/>
+            <img src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}"/>
             <p>{{movie.title}}</p>
         </div>
       </span>
