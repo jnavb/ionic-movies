@@ -19,7 +19,10 @@
 	color: color($colors, light);
 }
 .toolbar-background {
-		background: none;
+	background: none;
+}
+.toolbar {
+	background-color: color($colors, primary);
 }
 .toolbar-title {
 	color: color($colors, light);
