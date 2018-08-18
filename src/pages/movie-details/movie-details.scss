@@ -1,4 +1,7 @@
 page-movie-details {
+	.toolbar {
+		background: none;
+	}
 	.list button{
 		color: color($colors, font);
 		font-size: 1.8rem;
