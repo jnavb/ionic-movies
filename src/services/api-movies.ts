@@ -27,7 +27,8 @@ export class ApiMovies {
 	movieDetail = (id: number) => {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
-			.set('language', 'en-US');
+			.set('language', 'en-US')
+			.set('append_to_response', 'credits');
 
 		return this.http.get(`${this.baseUrl}movie/${id}`, { params })
 	} 
