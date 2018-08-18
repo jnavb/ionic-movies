@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { ApiMovies } from '../../services/api-movies'
 import { Movie } from '../../models/movie'
 /**
@@ -15,7 +15,9 @@ import { Movie } from '../../models/movie'
   templateUrl: 'movie-details.html',
 })
 export class MovieDetailsPage {
-	movieHeader: Movie;
+	@ViewChild('slider') slider: Slides;
+  segmentPage = 'details';
+  movieHeader: Movie;
   movieDetail: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiMovies) {
@@ -25,11 +27,31 @@ export class MovieDetailsPage {
   ionViewDidLoad() {
     if(this.movieHeader)
       this.getDetail(this.movieHeader.id);
+    console.log('HEADER', this.movieHeader)
+    console.log('DETAIL', this.movieDetail)
   }
 
   getDetail(id: number) {
     this.api.movieDetail(id)
-      .subscribe(res => {this.movieDetail = res});
+      .subscribe(res => {
+        this.movieDetail = res;
+        this.movieDetail.genres = res.genres.map(genre => genre.name);
+        this.movieDetail.credits = res.credits.cast.slice(0,5).map(person => [person.id, person.character, person.name])
+        console.log(this.movieDetail)
+      });
+  }
+
+  selectedTab(index) {
+    this.slider.slideTo(index);
+  }
+  
+  slideChanged() {
+  if (this.slider.getActiveIndex().toString() !== this.segmentPage)        
+    switch(this.slider.getActiveIndex()) {
+      case 0:  this.segmentPage = 'details'; break;
+      case 1:  this.segmentPage = 'summary'; break;    
+      case 2:  this.segmentPage = 'cast'; break;    
+    }
   }
 
 }
