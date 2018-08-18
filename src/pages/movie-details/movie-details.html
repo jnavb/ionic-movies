@@ -7,8 +7,18 @@
 <ion-header *ngIf="movieHeader.backdrop_path" [ngStyle]="{'background-image': 
                           'url(https://image.tmdb.org/t/p/w400/' 
                           + movieHeader?.backdrop_path + ')'}">
-  <ion-navbar> 
+  <ion-navbar class="navbar"> 
   </ion-navbar>
+  <ion-toolbar class="tabs">
+    <ion-segment [(ngModel)]="segmentPage" color="font">
+      <ion-segment-button value="details" (click)="selectedTab(0)"> DETAILS
+      </ion-segment-button>
+      <ion-segment-button value="summary" (click)="selectedTab(1)"> SUMMARY
+      </ion-segment-button>
+      <ion-segment-button value="cast" (click)="selectedTab(2)"> CAST
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-header *ngIf="!movieHeader.backdrop_path">
@@ -18,8 +28,12 @@
 
 
 <ion-content *ngIf="movieHeader">
-<div>
-	<ion-list>
+
+  
+<ion-slides #slider (ionSlideDidChange)="slideChanged()">
+  <ion-slide>
+      
+<ion-list>
   <button ion-item >
     {{ movieHeader?.title }}
   </button>   
@@ -39,10 +53,34 @@
   <button ion-item >
     <span *ngIf="movieHeader.original_language"> {{ movieHeader.original_language | languagePipe }} </span>
   </button>
-  <p padding>
-    {{ movieHeader?.overview }}
-  </p>
-
+  <button ion-item *ngIf="movieDetail && movieDetail.runtime">
+    {{movieDetail.runtime}} min.
+  </button>
+  <button ion-item *ngIf="movieDetail && movieDetail.genres">
+    {{movieDetail?.genres.join(', ')}}
+  </button>
 </ion-list>
-</div>
+
+    </ion-slide>
+
+    <ion-slide>
+      <p padding>
+        {{ movieHeader?.overview }}
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+    <div *ngIf="movieDetail?.credits">  
+      <ion-list *ngFor="let person of movieDetail.credits">
+        <button ion-item>
+          <h1>{{person[1]}}</h1>
+          <h2>{{person[2]}}</h2>
+        </button>
+      </ion-list>
+    </div>
+    </ion-slide>
+  </ion-slides>
+
+
+
 </ion-content>

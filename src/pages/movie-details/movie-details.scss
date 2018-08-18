@@ -1,7 +1,5 @@
 page-movie-details {
-	.toolbar {
-		background: none;
-	}
+	
 	.list button{
 		color: color($colors, font);
 		font-size: 1.8rem;
@@ -32,6 +30,18 @@ page-movie-details {
 		height:35%; 
     background-size: cover; 
     background-position: center;
-    filter: brightness(70%) blur(1px);
+    .navbar {
+    filter: brightness(70%) blur(1px);   
+    background: none; 	
+    }
+	}
+	.segment-button {
+    font-size: 1.1em !important;
+	}
+	.tabs {
+		top: 62%;
+	}
+	.slide-zoom {
+    text-align: initial;
 	}
 }
