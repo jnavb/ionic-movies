@@ -20,7 +20,7 @@ export class ActorsPage {
 
   searchPopularActors() {
   	this.api.popularActors()
-  		.subscribe(res => {this.actorsPopular = res.slice(0,5);});
+  		.subscribe(res => {this.actorsPopular = res.slice(0,10);});
   }
   
   getActors(event){
