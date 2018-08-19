@@ -3,21 +3,16 @@
     <ion-title>Movies</ion-title>
   </ion-navbar>
   <ion-toolbar>
-    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getMovies($event)" (ionClear)="clearMoviesList()" placeholder="Search movie..." >
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getMovies($event)" (ionClear)="clearMoviesList()" placeholder="Search movie...">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
-  <ion-item *ngFor="let movie of movieSearch"
-            (click)="pushMovieDetail(movie)">
+  <ion-item *ngFor="let movie of movieSearch" (click)="pushMovieDetail(movie)">
     <h2>{{movie.title}}</h2>
   </ion-item>
-
-  
   <div *ngIf="!movieSearch">
-  <h1 class="list-header">In theaters</h1>
+    <h1 class="list-header">In theaters</h1>
     <div *ngFor="let movie of moviesInTheather">
       <span *ngIf="movie.poster_path"> 
         <div class="card" (click)="pushMovieDetail(movie)">
@@ -26,7 +21,7 @@
         </div>
       </span>
     </div>
-  <h1 class="list-header">Popular</h1>
+    <h1 class="list-header">Popular</h1>
     <div *ngFor="let movie of moviesPopular">
       <span *ngIf="movie.poster_path"> 
         <div class="card" (click)="pushMovieDetail(movie)">
@@ -36,5 +31,4 @@
       </span>
     </div>
   </div>
-
 </ion-content>

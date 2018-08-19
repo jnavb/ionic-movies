@@ -1,47 +1,47 @@
 page-movie-details {
-	
-	.list button{
-		color: color($colors, font);
-		font-size: 1.8rem;
-	}
 
-	.list button:first-child {
-		font-size: 2rem;
-	}
+  .list button {
+    color: color($colors, font);
+    font-size: 1.8rem;
+  }
 
-	.content {
-		color: color($colors, font);
-		font-size: 1.8rem;
-	}
+  .list button:first-child {
+    font-size: 2rem;
+  }
 
-	.item {
-		padding-left: 0;
-	}
-	.item-inner {
-		padding-left: 16px;
-	}
+  .content {
+    color: color($colors, font);
+    font-size: 1.8rem;
+  }
 
-	.button-inner {
-		//1.Solve opacity background problem
-		//2.Increase arrow weight (if possible)
-		filter: brightness(inherit);
-	}
-	ion-header {
-		height:35%; 
-    background-size: cover; 
+  .item {
+    padding-left: 0;
+  }
+  .item-inner {
+    padding-left: 16px;
+  }
+
+  .button-inner {
+    //1.Solve opacity background problem
+    //2.Increase arrow weight (if possible)
+    filter: brightness(inherit);
+  }
+  ion-header {
+    height: 35%;
+    background-size: cover;
     background-position: center;
     .navbar {
-    filter: brightness(70%) blur(1px);   
-    background: none; 	
+      filter: brightness(70%) blur(1px);
+      background: none;
     }
-	}
-	.segment-button {
+  }
+  .segment-button {
     font-size: 1.1em !important;
-	}
-	.tabs {
-		top: 62%;
-	}
-	.slide-zoom {
+  }
+  .tabs {
+    top: 62%;
+  }
+  .slide-zoom {
     text-align: initial;
-	}
+  }
 }
