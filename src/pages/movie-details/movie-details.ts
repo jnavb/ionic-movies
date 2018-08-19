@@ -18,7 +18,7 @@ export class MovieDetailsPage {
 	@ViewChild('slider') slider: Slides;
   segmentPage = 'details';
   movieHeader: Movie;
-  movieDetail: any;
+  movieDetail: Movie;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiMovies) {
   this.movieHeader = navParams.data.movie;
@@ -35,9 +35,7 @@ export class MovieDetailsPage {
     this.api.movieDetail(id)
       .subscribe(res => {
         this.movieDetail = res;
-        this.movieDetail.genres = res.genres.map(genre => genre.name);
-        this.movieDetail.credits = res.credits.cast.slice(0,5).map(person => [person.id, person.character, person.name])
-        console.log(this.movieDetail)
+        console.log('DETAIL', this.movieDetail)
       });
   }
 

@@ -20,7 +20,7 @@ export class ApiMovies {
 			.set('page', '1')
 			.set('include_adult', 'false');
 
-		return this.http.get(`${this.baseUrl}search/movie?`, { params })
+		return this.http.get<Movie>(`${this.baseUrl}search/movie?`, { params })
 			.map((json:any) => json.results);
 	}
 
@@ -30,7 +30,7 @@ export class ApiMovies {
 			.set('language', 'en-US')
 			.set('append_to_response', 'credits');
 
-		return this.http.get(`${this.baseUrl}movie/${id}`, { params })
+		return this.http.get<Movie>(`${this.baseUrl}movie/${id}`, { params })
 	} 
 
 	popularMovies = () => {
