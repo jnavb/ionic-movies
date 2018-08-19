@@ -57,7 +57,10 @@
     {{movieDetail.runtime}} min.
   </button>
   <button ion-item *ngIf="movieDetail && movieDetail.genres">
-    {{movieDetail?.genres.join(', ')}}
+    <span *ngFor="let genre of movieDetail.genres;let last = last;"> 
+      {{genre.name}}
+      <span *ngIf="!last">, </span>
+    </span>
   </button>
 </ion-list>
 
@@ -70,11 +73,11 @@
     </ion-slide>
 
     <ion-slide>
-    <div *ngIf="movieDetail?.credits">  
-      <ion-list *ngFor="let person of movieDetail.credits">
-        <button ion-item>
-          <h1>{{person[1]}}</h1>
-          <h2>{{person[2]}}</h2>
+    <div *ngIf="movieDetail?.credits?.cast">  
+      <ion-list *ngFor="let person of movieDetail.credits.cast; let index = index;">
+        <button ion-item *ngIf="index < 5">
+          <h1>{{person.name}}</h1>
+          <h2>{{person.character}}</h2>
         </button>
       </ion-list>
     </div>
