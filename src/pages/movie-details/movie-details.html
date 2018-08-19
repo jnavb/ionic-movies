@@ -15,8 +15,18 @@
   </ion-toolbar>
 </ion-header>
 <ion-header *ngIf="!movieHeader.backdrop_path">
-  <ion-navbar>
+  <ion-navbar class="navbar">
   </ion-navbar>
+  <ion-toolbar class="tabs">
+    <ion-segment [(ngModel)]="segmentPage" color="font">
+      <ion-segment-button value="details" (click)="selectedTab(0)"> DETAILS
+      </ion-segment-button>
+      <ion-segment-button value="summary" (click)="selectedTab(1)"> SUMMARY
+      </ion-segment-button>
+      <ion-segment-button value="cast" (click)="selectedTab(2)"> CAST
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="movieHeader">
   <ion-slides #slider (ionSlideDidChange)="slideChanged()">
