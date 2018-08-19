@@ -1,13 +1,7 @@
-<!--
-  Generated template for the MovieDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header *ngIf="movieHeader.backdrop_path" [ngStyle]="{'background-image': 
                           'url(https://image.tmdb.org/t/p/w400/' 
                           + movieHeader?.backdrop_path + ')'}">
-  <ion-navbar class="navbar"> 
+  <ion-navbar class="navbar">
   </ion-navbar>
   <ion-toolbar class="tabs">
     <ion-segment [(ngModel)]="segmentPage" color="font">
@@ -20,70 +14,58 @@
     </ion-segment>
   </ion-toolbar>
 </ion-header>
-
 <ion-header *ngIf="!movieHeader.backdrop_path">
-  <ion-navbar> 
+  <ion-navbar>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content *ngIf="movieHeader">
-
-  
-<ion-slides #slider (ionSlideDidChange)="slideChanged()">
-  <ion-slide>
-      
-<ion-list>
-  <button ion-item >
-    {{ movieHeader?.title }}
-  </button>   
-  <button ion-item >  
-    <div *ngIf="movieHeader?.vote_average;else notRated">
-      <ion-icon [name]="movieHeader?.vote_average > 2 ? 'star' : 'star-outline'"></ion-icon>
-      <ion-icon [name]="movieHeader?.vote_average > 4 ? 'star' : 'star-outline'"></ion-icon>
-      <ion-icon [name]="movieHeader?.vote_average > 6 ? 'star' : 'star-outline'"></ion-icon>
-      <ion-icon [name]="movieHeader?.vote_average > 8 ? 'star' : 'star-outline'"></ion-icon>
-      <ion-icon [name]="movieHeader?.vote_average > 9 ? 'star' : 'star-outline'"></ion-icon>
-    </div>
-    <ng-template #notRated>Not rated</ng-template> 
-  </button> 
-  <button ion-item >
-    {{ movieHeader?.release_date | date: 'longDate'}}
-  </button>
-  <button ion-item >
-    <span *ngIf="movieHeader.original_language"> {{ movieHeader.original_language | languagePipe }} </span>
-  </button>
-  <button ion-item *ngIf="movieDetail && movieDetail.runtime">
-    {{movieDetail.runtime}} min.
-  </button>
-  <button ion-item *ngIf="movieDetail && movieDetail.genres">
-    <span *ngFor="let genre of movieDetail.genres;let last = last;"> 
-      {{genre.name}}
-      <span *ngIf="!last">, </span>
-    </span>
-  </button>
-</ion-list>
-
+  <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+    <ion-slide>
+      <ion-list>
+        <button ion-item>
+          {{ movieHeader?.title }}
+        </button>
+        <button ion-item>
+          <div *ngIf="movieHeader?.vote_average;else notRated">
+            <ion-icon [name]="movieHeader?.vote_average > 2 ? 'star' : 'star-outline'"></ion-icon>
+            <ion-icon [name]="movieHeader?.vote_average > 4 ? 'star' : 'star-outline'"></ion-icon>
+            <ion-icon [name]="movieHeader?.vote_average > 6 ? 'star' : 'star-outline'"></ion-icon>
+            <ion-icon [name]="movieHeader?.vote_average > 8 ? 'star' : 'star-outline'"></ion-icon>
+            <ion-icon [name]="movieHeader?.vote_average > 9 ? 'star' : 'star-outline'"></ion-icon>
+          </div>
+          <ng-template #notRated>Not rated</ng-template>
+        </button>
+        <button ion-item>
+          {{ movieHeader?.release_date | date: 'longDate'}}
+        </button>
+        <button ion-item>
+          <span *ngIf="movieHeader.original_language"> {{ movieHeader.original_language | languagePipe }} </span>
+        </button>
+        <button ion-item *ngIf="movieDetail && movieDetail.runtime">
+          {{movieDetail.runtime}} min.
+        </button>
+        <button ion-item *ngIf="movieDetail && movieDetail.genres">
+          <span *ngFor="let genre of movieDetail.genres;let last = last;"> 
+          {{genre.name}}
+          <span *ngIf="!last">, </span>
+          </span>
+        </button>
+      </ion-list>
     </ion-slide>
-
     <ion-slide>
       <p padding>
         {{ movieHeader?.overview }}
       </p>
     </ion-slide>
-
     <ion-slide>
-    <div *ngIf="movieDetail?.credits?.cast">  
-      <ion-list *ngFor="let person of movieDetail.credits.cast; let index = index;">
-        <button ion-item *ngIf="index < 5">
-          <h1>{{person.name}}</h1>
-          <h2>{{person.character}}</h2>
-        </button>
-      </ion-list>
-    </div>
+      <div *ngIf="movieDetail?.credits?.cast">
+        <ion-list *ngFor="let person of movieDetail.credits.cast; let index = index;">
+          <button ion-item *ngIf="index < 5">
+            <h1>{{person.name}}</h1>
+            <h2>{{person.character}}</h2>
+          </button>
+        </ion-list>
+      </div>
     </ion-slide>
   </ion-slides>
-
-
-
 </ion-content>

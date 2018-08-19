@@ -3,28 +3,21 @@
     <ion-title>Actors</ion-title>
   </ion-navbar>
   <ion-toolbar>
-  	<ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getActors($event)" (ionClear)="clearSearchbar()" placeholder="Search for actor..." >
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="getActors($event)" (ionClear)="clearSearchbar()" placeholder="Search for actor...">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-	
-	<ion-item *ngFor="let actor of listFromSearch"
-            (click)="pushActorDetail(actor)">
+  <ion-item *ngFor="let actor of listFromSearch" (click)="pushActorDetail(actor)">
     <h2>{{actor.name}}</h2>
   </ion-item>
-
   <div *ngIf="!listFromSearch">
-  	<h1 class="list-header">Popular</h1>
-  	<div class="actor-item" *ngFor="let actor of actorsPopular"
-  			(click)="pushActorDetail(actor.id)">
-  		<div class="actor-image">
-  			<img src="https://image.tmdb.org/t/p/w200{{actor.profile_path}}">
-  		</div>
-  		<p>{{actor.name}}</p>
-  	</div>
-	</div>
-
+    <h1 class="list-header">Popular</h1>
+    <div class="actor-item" *ngFor="let actor of actorsPopular" (click)="pushActorDetail(actor.id)">
+      <div class="actor-image">
+        <img src="https://image.tmdb.org/t/p/w200{{actor.profile_path}}">
+      </div>
+      <p>{{actor.name}}</p>
+    </div>
+  </div>
 </ion-content>
-
