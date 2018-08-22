@@ -12,7 +12,7 @@ export class ApiMovies {
 	constructor(public http: HttpClient) {
 	}
 
-	movieSearch = (query: string) => {
+	movieSearch(query: string) {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
 			.set('query', query)
@@ -24,7 +24,7 @@ export class ApiMovies {
 			.map((json:any) => json.results);
 	}
 
-	movieDetail = (id: number) => {
+	movieDetail(id: number) {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
 			.set('language', 'en-US')
@@ -33,7 +33,7 @@ export class ApiMovies {
 		return this.http.get<Movie>(`${this.baseUrl}movie/${id}`, { params })
 	} 
 
-	popularMovies = () => {
+	popularMovies() {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
 			.set('language', 'en-US')
@@ -43,7 +43,7 @@ export class ApiMovies {
 			.map((json:any) => json.results);
 	}
 
-	inTheathers = (dateGte:string, dateLte: string) => {
+	inTheathers(dateGte:string, dateLte: string) {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
 			.set('primary_release_date.gte', dateGte)
@@ -58,7 +58,7 @@ export class ApiMovies {
 			.map((json:any) => json.results)
 	}
 
-	popularActors = () => {
+	popularActors() {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
 			.set('language', 'en-US')
@@ -67,7 +67,7 @@ export class ApiMovies {
 		return this.http.get(`${this.baseUrl}person/popular?`, { params })
 			.map((json:any) => json.results);
 	}
-	actorSearch = (personId:string) => {
+	actorSearch(personId:string) {
 		let params = new HttpParams()
 			.set('api_key', this.apiKey)
 			.set('query', personId)
