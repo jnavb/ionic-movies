@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 import { Movie } from '../models/movie'
+import { Actor } from '../models/actor'
 
 @Injectable()
 export class ApiMovies {
@@ -64,7 +65,7 @@ export class ApiMovies {
 			.set('language', 'en-US')
 			.set('page', '1');
 
-		return this.http.get(`${this.baseUrl}person/popular?`, { params })
+		return this.http.get<Actor[]>(`${this.baseUrl}person/popular?`, { params })
 			.map((json:any) => json.results);
 	}
 	actorSearch(personId:string) {
@@ -75,7 +76,7 @@ export class ApiMovies {
 			.set('page', '1')
 			.set('include_adult', 'false');
 
-		return this.http.get(`${this.baseUrl}search/person?`, { params })
+		return this.http.get<Actor[]>(`${this.baseUrl}search/person?`, { params })
 			.map((json:any) => json.results);
 	}
 }
