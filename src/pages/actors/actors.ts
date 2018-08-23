@@ -8,10 +8,10 @@ import { ApiMovies } from '../../services/api-movies'
   templateUrl: 'actors.html',
 })
 export class ActorsPage {
-	public listFromSearch: Array<Object> = null;
-	public actorsPopular: Array<Object> = [];
+	private listFromSearch: Array<Object> = null;
+	private actorsPopular: Array<Object> = [];
 
-	constructor(public navCtrl: NavController, public api: ApiMovies) {
+	constructor(private navCtrl: NavController, private api: ApiMovies) {
   }
 
   ionViewDidLoad() {

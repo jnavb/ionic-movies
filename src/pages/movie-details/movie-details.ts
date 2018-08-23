@@ -2,12 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { ApiMovies } from '../../services/api-movies'
 import { Movie } from '../../models/movie'
-/**
- * Generated class for the MovieDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,11 +10,11 @@ import { Movie } from '../../models/movie'
 })
 export class MovieDetailsPage {
 	@ViewChild('slider') slider: Slides;
-  segmentPage = 'details';
-  movieHeader: Movie;
-  movieDetail: Movie;
+  private segmentPage = 'details';
+  private movieHeader: Movie;
+  private movieDetail: Movie;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiMovies) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private api: ApiMovies) {
   this.movieHeader = navParams.data.movie;
   }
 

@@ -8,12 +8,12 @@ import { ApiMovies } from '../../services/api-movies'
   templateUrl: 'home.html'
 })
 export class HomePage {
-  searchQuery: string = '';
-  movieSearch: Array<Object> = null;
-  moviesInTheather: Array<Object> = [];
-  moviesPopular: Array<Object> = [];
+  private searchQuery: string = '';
+  private movieSearch: Array<Object> = null;
+  private moviesInTheather: Array<Object> = [];
+  private moviesPopular: Array<Object> = [];
 
-  constructor(public navCtrl: NavController, public api : ApiMovies) {}
+  constructor(private navCtrl: NavController, private api : ApiMovies) {}
 
   getMovies(event) {
     let query = event.target.value;
