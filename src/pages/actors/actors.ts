@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { ApiMovies } from '../../services/api-movies'
+import { Actor } from '../../models/actor'
 
 @Component({
   selector: 'page-actors',
   templateUrl: 'actors.html',
 })
 export class ActorsPage {
-	private listFromSearch: Array<Object> = null;
-	private actorsPopular: Array<Object> = [];
+	private listFromSearch: Array<Actor> = null;
+	private actorsPopular: Array<Actor> = [];
 
 	constructor(private navCtrl: NavController, private api: ApiMovies) {
   }
