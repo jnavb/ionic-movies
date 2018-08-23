@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { ApiMovies } from '../../services/api-movies'
+import { Movie } from '../../models/movie'
 
 @Component({
   selector: 'page-home',
@@ -9,9 +10,9 @@ import { ApiMovies } from '../../services/api-movies'
 })
 export class HomePage {
   private searchQuery: string = '';
-  private movieSearch: Array<Object> = null;
-  private moviesInTheather: Array<Object> = [];
-  private moviesPopular: Array<Object> = [];
+  private movieSearch: Array<Movie> = null;
+  private moviesInTheather: Array<Movie> = [];
+  private moviesPopular: Array<Movie> = [];
 
   constructor(private navCtrl: NavController, private api : ApiMovies) {}
 
